@@ -50,4 +50,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
 end
