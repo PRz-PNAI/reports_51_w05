@@ -94,3 +94,15 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+shared_context "log in" do
+  before :each do
+    visit '/users/sign_in'
+    within("#new_user") do
+      fill_in 'Email', :with => email
+      fill_in 'Password', :with => pass
+    end
+    click_button 'Log in'
+  end
+end
+
