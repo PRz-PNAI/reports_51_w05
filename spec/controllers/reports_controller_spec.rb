@@ -1,7 +1,7 @@
 describe ReportsController do
-  # https://github.com/thoughtbot/shoulda-matchers/blob/v2.8.0/lib/shoulda/matchers/action_controller/strong_parameters_matcher.rb
-  pending "permit specs for #create/#update using shoulda for logged in user"
+
   context "With user not logged in" do
+
     let(:params) do
       {
         report: attributes_for(:report)
@@ -9,7 +9,6 @@ describe ReportsController do
     end
 
     it "allows to fill report fields" do
-      puts params
       is_expected.to permit(:first_name, :last_name, :email, :content).
         for(:create, params: params).on(:report)
     end
@@ -23,6 +22,34 @@ describe ReportsController do
       is_expected.not_to permit(:comment).
         for(:create, params: params).on(:report)
     end
+  end
 
+  context "With user logged in" do
+    include Warden::Test::Helpers
+
+    before(:each) { sign_in(user, scope: :user) }
+
+    let(:user) { create(:user) }
+    let(:report) { create(:report, :comment, :grade) }
+    let(:params) do
+      {
+        report: report.attributes,
+        id: report.id
+      }
+    end
+
+    it "allows to grade and comment report" do
+      is_expected.to permit(:grade, :comment).
+        for(:update, params: params).on(:report)
+    end
+
+    it "does not allow to change contents or autor data" do
+      aggregate_failures "not allowed fields" do
+        [ :first_name, :last_name, :email, :content ].each do |field|
+          is_expected.not_to permit(field).
+            for(:update, params: params).on(:report)
+        end
+      end
+    end
   end
 end
