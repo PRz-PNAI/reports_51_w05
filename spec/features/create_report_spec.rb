@@ -10,7 +10,7 @@ feature "As unregistered user I can add a report" do
       fill_in 'report_first_name', :with => 'Józef'
       fill_in 'report_last_name', :with => 'Testowy'
       fill_in 'report_email', :with => 'jozek@testowy.mail.nic'
-      fill_in 'report_content', :with => 'To jest krótka treść sprawozdania'
+      fill_in 'report_content', :with => 'To jest nie za krótka treść sprawozdania. '*20
     end
     click_button 'Create Report'
 

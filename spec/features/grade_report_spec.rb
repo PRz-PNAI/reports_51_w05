@@ -15,7 +15,7 @@ feature "As registered user I can grade a report" do
   before :each do
     Report.create first_name: 'Jan', last_name: 'Sobieski',
                   email: 'janIII@sobieski.com',
-                  content: "Pobiłem Turków!"
+                  content: "Pobiłem Turków! Ale bez przesady! "*20
   end
 
   scenario "User logs in and sees reports to grade" do
