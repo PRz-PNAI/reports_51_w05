@@ -1,3 +1,5 @@
+require 'features_helper'
+
 describe "the signup process", :type => :feature do
   include_context 'log in'
 

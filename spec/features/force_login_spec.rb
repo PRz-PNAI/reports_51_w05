@@ -1,3 +1,5 @@
+require 'features_helper'
+
 describe "force the signup process", :type => :feature do
 
   it "redirects to login" do

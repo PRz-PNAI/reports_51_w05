@@ -1,3 +1,5 @@
+require 'features_helper'
+
 describe "creating new report", :type => :feature do
   before :each do
     visit '/'

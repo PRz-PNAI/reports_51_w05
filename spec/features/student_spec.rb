@@ -1,3 +1,5 @@
+require 'features_helper'
+
 describe "default page", :type => :feature do
   before :each do
     visit '/'

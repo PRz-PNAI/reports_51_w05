@@ -1,3 +1,5 @@
+require 'features_helper'
+
 describe "grading report process", :type => :feature do
   before :each do
     Report.create first_name: 'Jan', last_name: 'Sobieski',
