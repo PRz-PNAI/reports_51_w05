@@ -53,6 +53,12 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
-  gem 'shoulda-matchers', '~> 3.1'
+  # WRz: inaczej #permit nie dziala z Rails 5.1
+  # potrzebna jest wersja, w ktorej jest juz wmergowany commit
+  # https://github.com/thoughtbot/shoulda-matchers/commit/ca761db1f7412a982a8fdbf076df663ced6a7c7f
+  # czyli (po cherrypicku) ten:
+  # https://github.com/thoughtbot/shoulda-matchers/commit/ce9624b3c5a08b9134150e228440c771d95782b7
+  # w normalnym 3.1.2 jeszcze nie jest...
+  gem 'shoulda-matchers', ref: 'ce9624b',  git: 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem "factory_bot_rails", "~> 4.0"
 end

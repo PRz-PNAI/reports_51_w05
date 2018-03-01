@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: ce9624b3c5a08b9134150e228440c771d95782b7
+  ref: ce9624b
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -176,8 +184,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.0.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -232,7 +238,7 @@ DEPENDENCIES
   rails (~> 5.1.5)
   rspec-rails
   sass-rails (~> 5.0)
-  shoulda-matchers (~> 3.1)
+  shoulda-matchers!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
