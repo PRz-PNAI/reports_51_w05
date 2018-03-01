@@ -54,4 +54,5 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'shoulda-matchers', '~> 3.1'
+  gem "factory_bot_rails", "~> 4.0"
 end
