@@ -53,4 +53,5 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
+  gem 'shoulda-matchers', '~> 3.1'
 end
