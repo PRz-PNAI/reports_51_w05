@@ -1,15 +1,13 @@
 require 'features_helper'
 
-describe "default page", :type => :feature do
-  before :each do
+feature "As unregistered user I get report form on default page" do
+  scenario "User enters / and sees report form" do
     visit '/'
+
+    expect(page).to have_field('report_first_name')
+    expect(page).to have_field('report_last_name')
+    expect(page).to have_field('report_email')
+    expect(page).to have_field('report_content')
+    expect(page).to have_button('Create Report')
   end
-  subject { page }
-
-  it{ should have_field('report_first_name') }
-  it{ should have_field('report_last_name') }
-  it{ should have_field('report_email') }
-  it{ should have_field('report_content') }
-  it{ should have_button('Create Report') }
-
 end

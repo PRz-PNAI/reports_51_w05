@@ -1,8 +1,8 @@
 require 'features_helper'
 
-describe "force the signup process", :type => :feature do
+feature "As unregistered user I cannot access reports" do
 
-  it "redirects to login" do
+  scenario "User enters reports list and is redirected to login page" do
     visit '/reports'
     within 'h2' do
       expect(page).to have_content 'Log in'

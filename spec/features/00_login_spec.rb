@@ -1,10 +1,16 @@
 require 'features_helper'
 
-describe "the signup process", :type => :feature do
+feature "As registered user I can log in" do
+
   include_context 'log in'
 
-  subject { page }
-  it{ should have_content 'Signed in successfully' }
-  it{ should have_content 'Reports' }
-  it{ should have_link 'Log out' }
+  scenario "User logs in correctly" do
+
+    log_in(user)
+
+    expect(page).to have_content 'Signed in successfully'
+    expect(page).to have_content 'Reports'
+    expect(page).to have_link 'Log out'
+
+  end
 end

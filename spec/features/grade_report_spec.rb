@@ -1,57 +1,56 @@
 require 'features_helper'
 
-describe "grading report process", :type => :feature do
+feature "As registered user I can grade a report" do
+
+  def open_report
+    first(:link, 'Edit').click
+
+    expect(page).to have_field 'report_comment'
+    expect(page).to have_field 'report_grade'
+    expect(page).to have_button 'Update Report'
+  end
+
+  include_context 'log in'
+
   before :each do
     Report.create first_name: 'Jan', last_name: 'Sobieski',
                   email: 'janIII@sobieski.com',
                   content: "Pobiłem Turków!"
   end
 
-  include_context 'log in'
-
-  subject { page }
-
-  it { should have_link 'Edit' }
-
-  describe "open report" do
-    before :each do
-      first(:link, 'Edit').click
-    end
-
-    subject { page }
-
-    it { should have_field 'report_comment' }
-    it { should have_field 'report_grade' }
-    it { should have_button 'Update Report' }
-
-    describe "should save comment" do
-      before :each do
-        within 'form' do
-          fill_in 'report_comment', with: comment
-        end
-        click_button 'Update Report'
-      end
-      let(:comment){"To jest komentarz automatycznego testera: #{rand}"}
-      subject { page }
-
-      it { should have_content 'Report was successfully updated.' }
-      it { should have_content comment }
-
-   end
-
-   describe "should save grade" do
-     before :each do
-       within 'form' do
-         fill_in 'report_grade', with: grade
-       end
-       click_button 'Update Report'
-     end
-     let(:grade){"2.0 od automatu! #{rand}"}
-     subject { page }
-
-     it { should have_content 'Report was successfully updated.' }
-     it { should have_content grade }
-
-   end
+  scenario "User logs in and sees reports to grade" do
+    log_in(user)
+    expect(page).to have_link 'Edit'
   end
+
+  scenario "User opens report and fills the comment" do
+     log_in(user)
+     open_report
+
+     comment = "To jest komentarz automatycznego testera: #{rand}"
+     within 'form' do
+       fill_in 'report_comment', with: comment
+     end
+     click_button 'Update Report'
+
+     expect(page).to have_content 'Report was successfully updated.'
+     expect(page).to have_content comment
+
+   end
+
+   scenario "User opens report and fills the grade" do
+
+     log_in(user)
+     open_report
+
+     grade = "2.0 od automatu! #{rand}"
+     within 'form' do
+       fill_in 'report_grade', with: grade
+     end
+     click_button 'Update Report'
+
+     expect(page).to have_content 'Report was successfully updated.'
+     expect(page).to have_content grade
+
+   end
 end
