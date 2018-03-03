@@ -60,8 +60,10 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Devise in tests
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
+  if defined? Devise
+    config.include Devise::Test::ControllerHelpers, type: :controller
+    config.include Devise::Test::ControllerHelpers, type: :view
+  end
 end
 
 Capybara.server = :puma, { Silent: true }
