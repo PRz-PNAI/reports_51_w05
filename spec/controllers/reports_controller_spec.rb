@@ -25,7 +25,12 @@ describe ReportsController do
   end
 
   context "With user logged in" do
-    include Warden::Test::Helpers
+    if defined? Warden
+      include Warden::Test::Helpers
+    else
+      def sign_in(*args); end
+    end
+
 
     before(:each) { sign_in(user, scope: :user) }
 
