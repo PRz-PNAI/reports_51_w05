@@ -61,4 +61,5 @@ group :development, :test do
   # w normalnym 3.1.2 jeszcze nie jest...
   gem 'shoulda-matchers', ref: 'ce9624b',  git: 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'pry'
 end
