@@ -28,6 +28,8 @@ describe ReportsController do
     if defined? Warden
       include Warden::Test::Helpers
     else
+      # Just a hack to make specs work
+      # even if there is no authentication implemented
       def sign_in(*args); end
     end
 
