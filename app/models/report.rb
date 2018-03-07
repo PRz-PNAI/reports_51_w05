@@ -3,5 +3,5 @@ class Report < ApplicationRecord
   validates :content, length: { in: 100..1500 }
   validates :last_name, length: { in: 3..40 }
   validates :first_name, length: { in: 2..40 }
-  validates :email, format: { with: /[^@]+@[^@]+\.[^@]+/ }
+  validates :email, format: { with: /\A^[^@]+@[^@\.]+\.[^@]+\z/ }
 end
