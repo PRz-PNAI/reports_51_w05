@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'contact/new'
-
-  get 'contact/create'
+  resources :contact, only: [ :new, :create ]
 
   devise_for :users
   resources :reports
