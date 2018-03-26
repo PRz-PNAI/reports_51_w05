@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   private
   
   def auth
+    return if controller_name == 'contact'
   	return if controller_name == 'reports' && 
   			  (action_name == 'create' || action_name == 'new')
     authenticate_user!
