@@ -1,10 +1,10 @@
 class ContactsController < ApplicationController
   def new
-    @contact = Contact.new
+    @contact = ContactForm.new
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = ContactForm.new(contact_params)
     if @contact.valid?
       # send contact email
       logger.warn "Sending email from: #{@contact.email}"
