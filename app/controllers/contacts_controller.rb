@@ -1,13 +1,14 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
   def new
-    @contact = ContactForm.new
+    @contact = Contact.new
   end
 
   def create
-    @contact = ContactForm.new(contact_params[:contact])
+    @contact = Contact.new(contact_params)
     if @contact.valid?
       # send contact email
       logger.warn "Sending email from: #{@contact.email}"
+      redirect_to new_contact_path, notice: 'Message was sent'
     else
       render :new
     end

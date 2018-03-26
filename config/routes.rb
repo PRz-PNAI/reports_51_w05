@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contact, only: [ :new, :create ]
+  resources :contacts, only: [ :new, :create, :index ]
 
   devise_for :users
   resources :reports
