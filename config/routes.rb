@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'registrations/new'
+
+  get 'registrations/create'
+
   resources :topics
   devise_for :users
   resources :reports
