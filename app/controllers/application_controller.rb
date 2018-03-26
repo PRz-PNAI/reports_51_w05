@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :auth
 
   private
-  
+
   def auth
+    return if controller_name == 'registrations'
   	return if controller_name == 'reports' && 
   			  (action_name == 'create' || action_name == 'new')
     authenticate_user!
