@@ -1,2 +1,54 @@
-<h1>Registrations#new</h1>
-<p>Find me in app/views/registrations/new.html.erb</p>
+<h1>New registration</h1>
+
+<%= form_for(@registration) do |f| %>
+  <% if @registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+      <ul>
+      <% @registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
