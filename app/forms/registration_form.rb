@@ -19,6 +19,14 @@ class RegistrationForm
     errors.empty?
   end
 
+  def save
+    return false unless valid?
+    user_model.transaction do
+      user_model.save!
+      topic_model.save!
+    end
+  end
+
   private
 
   def user_model

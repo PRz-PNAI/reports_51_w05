@@ -7,7 +7,8 @@ class RegistrationsController < ApplicationController
     @registration = RegistrationForm.new(reg_params)
     if @registration.valid?
       logger.warn "Registration is valid!"
-      # TODO: put creating user and topic here!
+      @registration.save
+      redirect_to new_user_session_path, notice: "Registration was saved. Try to log in."
     else
       render :new
     end
