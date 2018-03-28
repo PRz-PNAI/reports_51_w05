@@ -1,24 +1,9 @@
-# README
+# PNAI, Lecture 5 examples
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Examples of `FormObject` pattern used on lecture 5 on PNAI.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Contact form example: tag `contact_form`
+* Registrations example: branch `registrations`
+  * Just working form: tag `without_saving`
+  * Respecting submodel validations: tag `with_validations`
+  * Saving user registration `HEAD`
